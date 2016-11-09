@@ -36,7 +36,12 @@
     "react-clone-referenced-element": "^1.0.1",
     "react-mixin": "^3.0.5",
     "react-native-drawer-layout": "^1.0.0",
+<<<<<<< 435b7874d06d35d6eccc5d2fb9b2e381eae3e0dd
     "react-native-tab-view": "^0.0.38",
+=======
+    "react-native-tab-view": "^0.0.33",
+    "react-native-blur": "^1.1.2",
+>>>>>>> add background image and footer to drawer
     "react-redux": "^4.4.5",
     "react-static-container": "^1.0.0",
     "react-timer-mixin": "^0.13.3",

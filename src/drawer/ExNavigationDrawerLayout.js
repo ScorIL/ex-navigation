@@ -10,12 +10,15 @@ import {
   Text,
   TouchableWithoutFeedback,
   View,
+  Image
 } from 'react-native';
 import DrawerLayout from 'react-native-drawer-layout';
 import TouchableNativeFeedbackSafe from '@exponent/react-native-touchable-native-feedback-safe';
 
 type Props = {
   renderHeader: () => React.Element<any>,
+  renderFooter: () => React.Element<any>,
+  bgImg: React.Element<any>,
   width: number,
   children: React.Element<any>,
   drawerPosition: 'left' | 'right',
@@ -57,17 +60,40 @@ export default class ExNavigationDrawerLayout extends React.Component {
   }
 
   _renderNavigationView = () => {
-    return (
-      <View style={[styles.navigationViewContainer, this.props.style]}>
-        <View>
-          {this.props.renderHeader()}
-        </View>
+    const bg = this.props.bgImg;
+    if(bg){
+      return (
+        <View style={[styles.navigationViewContainer, this.props.style]}>
+          <Image source={this.props.bgImg} style={styles.backgroundImage}>
+            <View>
+              {this.props.renderHeader()}
+            </View>
 
-        <ScrollView contentContainerStyle={styles.navigationViewScrollableContentContainer}>
-          {this._renderDrawerItems()}
-        </ScrollView>
-      </View>
-    );
+            <ScrollView contentContainerStyle={styles.navigationViewScrollableContentContainer}>
+              {this._renderDrawerItems()}
+            </ScrollView>
+            <View>
+              {this.props.renderFooter()}
+            </View>
+          </Image>
+        </View>
+      );
+    } else {
+      return (
+        <View style={[styles.navigationViewContainer, this.props.style]}>
+          <View>
+            {this.props.renderHeader()}
+          </View>
+
+          <ScrollView contentContainerStyle={styles.navigationViewScrollableContentContainer}>
+            {this._renderDrawerItems()}
+          </ScrollView>
+          <View>
+            {this.props.renderFooter()}
+          </View>
+        </View>
+      );
+    }
   }
 
   _renderDrawerItems = () => {
@@ -152,6 +178,12 @@ const styles = StyleSheet.create({
   },
   navigationViewScrollableContentContainer: {
     paddingTop: 8,
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+    width: null,
+    overflow: 'hidden'
   },
   buttonContainer: {
     flex: 1,
