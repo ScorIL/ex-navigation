@@ -11,7 +11,7 @@
     "lint": "eslint ./src ./example",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://github.com/exponentjs/ex-navigation.git",
+  "repository": "https://github.com/ScorIL/ex-navigation.git",
   "keywords": [
     "react-native",
     "navigation",
